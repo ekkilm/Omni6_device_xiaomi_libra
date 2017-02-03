@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+	<!-- Removals -->
+	<remove-project name="android_bootable_recovery" />
+	<remove-project name="android_external_jpeg" />
+	<remove-project name="android_packages_apps_Launcher3" />
+	<remove-project name="platform/system/bt"/>
+	<remove-project name="android_packages_apps_Bluetooth"/>
+	<remove-project name="android_hardware_libhardware"/>
+	<remove-project name="android_frameworks_base"/>
+
+	<!-- CAF -->
+	<project name="android_hardware_qcom_display-caf-msm8992" path="hardware/qcom/display-caf-msm8992" remote="omnirom" revision="android-6.0" />
+	<project name="android_hardware_qcom_media-caf-msm8992" path="hardware/qcom/media-caf-msm8992" remote="omnirom" revision="android-6.0" />
+	<project name="android_hardware_qcom_audio-caf-msm8992" path="hardware/qcom/audio-caf-msm8992" remote="omnirom" revision="android-6.0" />
+	<project name="android_device_qcom_caf-sepolicy" path="device/qcom/sepolicy" remote="omnirom" revision="android-6.0" />
+	<project name="android_frameworks_av" path="frameworks/av-caf" remote="omnirom" revision="android-6.0-caf" />
+	<project name="android_frameworks_native" path="frameworks/native-caf" remote="omnirom" revision="android-6.0-caf" />
+	<project name="android_hardware_ril" path="hardware/ril-caf" remote="omnirom" revision="android-6.0-caf" />
+	<project name="vendor_qcom_opensource_display-frameworks" path="vendor/qcom/opensource/display-frameworks" remote="omnirom" revision="android-6.0" />
+
+	<!-- Device-->
+	<project path="device/xiaomi/libra" name="ekkilm/Omni6_device_xiaomi_libra" remote="github" revision="android-6.0" />
+	
+	<!-- Kernel -->
+  	<project path="kernel/xiaomi/libra" name="morphicts/android_kernel_xiaomi_libra" remote="github" revision="cm-13.0" />
+  	
+  	<!-- Frameworks base -->
+  	<project path="frameworks/base" name="ekkilm/Omni6_android_frameworks_base" remote="github" revision="android-6.0" />
+
+	<!-- BoringSsl compat cm-13.0 branch -->
+   	<project path="external/sony/boringssl-compat" name="morphicts/android_external_sony_boringssl-compat" remote="github" revision="cm-13.0" />
+
+   	<!-- Stlport cm-13.0 branch -->
+   	<project path="external/stlport" name="CyanogenMod/android_external_stlport" remote="github" revision="cm-13.0" />
+
+	<!-- JPEG -->
+   	<project path="external/jpeg" name="morphicts/android_external_jpeg" remote="github" revision="stable/cm-13.0-ZNH2K"/>
+
+	<!-- TWRP -->
+	<project path="bootable/recovery" name="morphicts/android_bootable_recovery" remote="github" revision="android-6.0" />
+  	
+	<!-- Nano editor -->
+	<project path="external/nano" name="CyanogenMod/android_external_nano" remote="github" revision="cm-13.0"/>
+	<project path="external/libncurses" name="CyanogenMod/android_external_libncurses" remote="github" revision="cm-13.0" />
+
+	<!-- OTA Updater -->
+	<project name="CyanogenMod/android_packages_apps_CMUpdater" path="packages/apps/CMUpdater" remote="github" revision="cm-13.0" />
+
+	<!-- Trebuchet launcher -->
+	<project path="packages/apps/Trebuchet" name="CyanogenMod/android_packages_apps_Trebuchet" remote="github" revision="cm-12.1" />
+
+	<!-- Slim stuff -->
+	<project path="hardware/libhardware" name="SlimRoms/hardware_libhardware" remote="github" revision="mm6.0" />
+	<project path="packages/apps/Bluetooth" name="SlimRoms/packages_apps_Bluetooth" remote="github" revision="mm6.0" />
+	<project path="packages/apps/BluetoothExt" name="SlimRoms/packages_apps_BluetoothExt" remote="github" revision="mm6.0" />
+	<project path="system/bt" name="SlimRoms/android_system_bt" remote="github" revision="mm6.0" />
+
+	<!-- camera -->
+	<project name="android_packages_apps_SnapdragonCamera" path="packages/apps/SnapdragonCamera" remote="omnirom" revision="android-6.0" />
+
+</manifest>
