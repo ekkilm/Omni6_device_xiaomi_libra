@@ -35,15 +35,8 @@ TARGET_CPU_SMP := true
 TARGET_USES_64_BIT_BINDER := true
 TARGET_NO_SENSOR_PERMISSION_CHECK := true
 
-# Use dlmalloc instead of jemalloc for mallocs
-#MALLOC_IMPL := dlmalloc
-
 # Graphics
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
-#TARGET_USE_COMPAT_GRALLOC_ALIGN := true
-#BOARD_EGL_NEEDS_HANDLE_VALUE := true
-#VSYNC_EVENT_PHASE_OFFSET_NS := 2500000
-#SF_VSYNC_EVENT_PHASE_OFFSET_NS := 0000000
 
 TARGET_USES_ION := true
 TARGET_USES_OVERLAY := true
@@ -95,8 +88,6 @@ AUDIO_FEATURE_ENABLED_INCALL_MUSIC := false
 AUDIO_FEATURE_ENABLED_FM := false
 # Use device's audio_effects.conf
 TARGET_USE_DEVICE_AUDIO_EFFECTS_CONF := true
-# Ignore vendor audio_effects.conf
-# TARGET_IGNORE_VENDOR_AUDIO_EFFECTS_CONF := true
 # Enable speaker protection
 AUDIO_FEATURE_ENABLED_SPKR_PROTECTION := true
 TARGET_USES_QCOM_MM_AUDIO := true
@@ -168,11 +159,6 @@ TARGET_USERIMAGES_USE_F2FS := true
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 
-#TARGET_REQUIRES_SYNCHRONOUS_SETSURFACE := true
-
-#TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
-#TARGET_INIT_VENDOR_LIB := libinit_msm
-
 TARGET_LDPRELOAD := libNimsWrap.so
 
 TARGET_PROVIDES_LIBLIGHT := true
@@ -197,7 +183,6 @@ TARGET_HW_DISK_ENCRYPTION := true
 TARGET_CRYPTFS_HW_PATH := device/xiaomi/libra/packages/cryptfs_hw
 
 # Power
-#TARGET_POWERHAL_VARIANT := qcom
 TARGET_POWERHAL_VARIANT := tspower
 
 # Qualcomm support
@@ -221,10 +206,6 @@ TARGET_RIL_VARIANT := caf
 SIM_COUNT := 2
 TARGET_GLOBAL_CFLAGS += -DANDROID_MULTI_SIM
 TARGET_GLOBAL_CPPFLAGS += -DANDROID_MULTI_SIM
-
-# Flags for modem (we still have an old modem)
-#COMMON_GLOBAL_CFLAGS += -DUSE_RIL_VERSION_10
-#COMMON_GLOBAL_CPPFLAGS += -DUSE_RIL_VERSION_10
 
 # Added to indicate that protobuf-c is supported in this build
 PROTOBUF_SUPPORTED := true
@@ -257,8 +238,6 @@ BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 
 # Boot-animation
 TARGET_BOOTANIMATION_PRELOAD := true
-#TARGET_BOOTANIMATION_TEXTURE_CACHE := true
-#TARGET_BOOTANIMATION_USE_RGB565 := true
 
 # TWRP
 TW_THEME := portrait_hdpi
@@ -283,26 +262,21 @@ TWHAVE_SELINUX := true
 TW_DOWNLOAD_MODE := true
 TW_REBOOT_BOOTLOADER := true
 TW_EXTRA_LANGUAGES := true
-#TW_INCLUDE_NTFS_3G := true
 
-#ifeq ($(TWRP_BUILD),)
-# Use following recovery fstab when building ROM:
-#RECOVERY_FSTAB_VERSION := 2
-#TARGET_RECOVERY_FSTAB := device/xiaomi/libra/prebuilt/ramdisk/fstab.qcom
-#else
 # Use following recovery fstab when building TWRP recovery:
 RECOVERY_FSTAB_VERSION := 1
 TARGET_RECOVERY_FSTAB := device/xiaomi/libra/twrp.fstab
-#endif
 
-# Enable dex-preoptimization to speed up first boot sequence
+# Enable dexpreopt to speed boot time
 ifeq ($(HOST_OS),linux)
-  ifneq ($(TARGET_BUILD_VARIANT),eng)
+  ifeq ($(call match-word-in-list,$(TARGET_BUILD_VARIANT),user),true)
     ifeq ($(WITH_DEXPREOPT),)
       WITH_DEXPREOPT := true
     endif
   endif
 endif
+
+TARGET_RELEASETOOLS_EXTENSIONS := device/xiaomi/libra/releasetools
 
 # SELinux
 BOARD_SEPOLICY_DIRS += device/xiaomi/libra/sepolicy
